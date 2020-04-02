@@ -1,18 +1,13 @@
-from fastapi import APIRouter
-
+from fastapi import APIRouter, Depends
+from app.models import security, users
 router = APIRouter()
 
 
-@router.get("/users/", tags=["users"])
-async def read_users():
-    return [{"username": "Foo"}, {"username": "Bar"}]
+@router.get("/users/me/", response_model=users.User)
+async def read_users_me(current_user: users.User = Depends(users.get_current_active_user)):
+    return current_user
 
 
-@router.get("/users/me", tags=["users"])
-async def read_user_me():
-    return {"username": "fakecurrentuser"}
-
-
-@router.get("/users/{username}", tags=["users"])
-async def read_user(username: str):
-    return {"username": username}
+@router.get("/users/me/items/")
+async def read_own_items(current_user: users.User = Depends(users.get_current_active_user)):
+    return [{"item_id": "Foo", "owner": current_user.username}]

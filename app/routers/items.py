@@ -3,19 +3,18 @@ from fastapi import APIRouter, HTTPException
 router = APIRouter()
 
 
-@router.get("/")
+@router.get("/items/")
 async def read_items():
     return [{"name": "Item Foo"}, {"name": "item Bar"}]
 
 
-@router.get("/{item_id}")
+@router.get("/items/{item_id}")
 async def read_item(item_id: str):
     return {"name": "Fake Specific Item", "item_id": item_id}
 
 
 @router.put(
-    "/{item_id}",
-    tags=["custom"],
+    "/items/{item_id}",
     responses={403: {"description": "Operation forbidden"}},
 )
 async def update_item(item_id: str):

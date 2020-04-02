@@ -1,23 +1,42 @@
 from fastapi import Depends, FastAPI, Header, HTTPException
 
-from app.routers import items, users
+# Router Imports
+from app.routers import items, users, second_factor, authentication
+# Model Imports
+# Configuration Import
+import app.config as config
 
-app = FastAPI()
+app = FastAPI(
+    title = config.TITLE,
+    description = config.DESCRIPTION,
+    version = config.VERSION
+)
 
+# Authentication Routers
+app.include_router(
+    authentication.router,
+    tags=["Authentication"],
+    responses={404: {"description": "Not found"}},
+)
 
-async def get_token_header(x_token: str = Header(...)):
-    if x_token != "fake-super-secret-token":
-        raise HTTPException(status_code=400, detail="X-Token header invalid")
-
-
+# Authenticated APIs (prefix /auth)
+app.include_router(
+    second_factor.router,
+    prefix="/auth",
+    tags=["2-Factor Authentication"],
+    responses={404: {"description": "Not found"}},
+)
 app.include_router(
     users.router,
-    tags=["users"],
+    prefix="/auth",
+    tags=["Users"],
     responses={404: {"description": "Not found"}},
 )
 app.include_router(
     items.router,
-    tags=["items"],
-    dependencies=[Depends(get_token_header)],
+    prefix="/auth",
+    tags=["Items"],
     responses={404: {"description": "Not found"}},
 )
+
+# Unauthenticated APIs (prefix /public)
