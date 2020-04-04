@@ -9,6 +9,11 @@ pip3 install uvicorn
 pip3 install pyjwt
 pip3 install passlib
 pip3 install python-multipart
+pip3 install pyotp
+
+//Optional dependencies
+pip3 install pillow
+pip3 install qrcode
 ```
 Needs `python 3.6` and above
 

@@ -128,3 +128,4 @@ dmypy.json
 
 ## Remove config file with sensintive data from git
 config.py
+venv/
