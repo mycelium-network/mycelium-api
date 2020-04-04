@@ -1,1 +1,1 @@
-web: gunicorn -w 4 -k uvicorn.workers.UvicornWorker app.main:app
+web: gunicorn -w 4 -k --log-file ~/error.log uvicorn.workers.UvicornWorker app.main:app
