@@ -6,6 +6,11 @@ Mycelium is a distributed network to share common goods.
 Find the full project under https://www.mycelium.space/.
 
 A live version of the API is hosted under https://mycelioum.services/docs.
+
+## Demo Users:
+- johndoe:secret
+- alice:secret
+- bob:secret
 """
 VERSION = "0.0.1"
 
@@ -23,7 +28,7 @@ fake_users_db = {
         "username": "johndoe",
         "full_name": "John Doe",
         "email": "johndoe@example.com",
-        "hashed_password": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW",
+        "hashed_password": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW", # secret
         "disabled": False,
         "second_factor": False
     },
@@ -31,7 +36,7 @@ fake_users_db = {
         "username": "alice",
         "full_name": "Alice",
         "email": "alice@example.com",
-        "hashed_password": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW",
+        "hashed_password": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW", # secret
         "disabled": True,
         "second_factor": False
     },
@@ -39,7 +44,7 @@ fake_users_db = {
         "username": "bob",
         "full_name": "Bob",
         "email": "bob@example.com",
-        "hashed_password": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW",
+        "hashed_password": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW", # secret
         "disabled": False,
         "second_factor": True
     }
