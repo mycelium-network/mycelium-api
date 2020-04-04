@@ -1,18 +1,22 @@
 # APPLICATION CONFIG
 TITLE = "Mycelium-Network API"
 DESCRIPTION = """
+__ALPHA STATUS__
+
 Mycelium is a distributed network to share common goods.
 
 Find the full project under https://www.mycelium.space/.
 
-A live version of the API is hosted under https://mycelioum.services/docs.
+A live version of the API is hosted under https://mycelium-api.herokuapp.com/docs.
 
-### Demo Users:
-- johndoe:secret
-- alice:secret
-- bob:secret
+#### Demo Users
+| User | Password | TOTP Secret |
+|---|---|---|
+|johndoe|secret|PD6D3NQ3CKVEPIHH|
+|alice|secret|Q5XR4DG5KASPGWNA|
+|bob|secret|XLQAFA3YDIHHEZWB|
 """
-VERSION = "0.0.1"
+VERSION = "0.0.1.alpha"
 
 
 # SECURITY RELEVANT CONFIGURATION!

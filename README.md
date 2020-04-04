@@ -6,7 +6,7 @@ Clone this repository and navigate in the cloned folder:
 ```
 pip install -r requirements.txt
 ```
-Needs `python 3.6` and above
+Needs `python 3.6` or above.
 
 ## Run API 
 ```

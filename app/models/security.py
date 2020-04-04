@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import jwt
 from jwt import PyJWTError
 import app.config as config
@@ -14,6 +14,17 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     username: str = None
+
+class SecondFactorTokenIn(BaseModel):
+    code: str = Field(
+        ...,
+        title="Security code for TOTP",
+        min_length=6,
+        max_length=6
+    )
+class SecondFactorTokenOut(BaseModel):
+    code: str
+    verified: bool
 
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)

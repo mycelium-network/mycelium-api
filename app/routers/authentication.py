@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 from fastapi import APIRouter, HTTPException, Depends, status
-from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm, OpenIdConnect
 from app.models import security, users
 from app.sql import database
 import app.config as config
@@ -21,3 +21,7 @@ async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(
         data={"sub": user.username}, expires_delta=access_token_expires
     )
     return {"access_token": access_token, "token_type": "bearer"}
+
+@router.post("/openid-connect", response_model=security.Token)
+async def login_openid_connect(form_data: OpenIdConnect = Depends()):
+    return {"status":""}
