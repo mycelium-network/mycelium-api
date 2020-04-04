@@ -7,7 +7,7 @@ Find the full project under https://www.mycelium.space/.
 
 A live version of the API is hosted under https://mycelioum.services/docs.
 
-## Demo Users:
+### Demo Users:
 - johndoe:secret
 - alice:secret
 - bob:secret
