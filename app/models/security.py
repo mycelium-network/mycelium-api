@@ -26,6 +26,20 @@ class SecondFactorTokenOut(BaseModel):
     code: str
     verified: bool
 
+class SecondFactorQRCode(BaseModel):
+    qrcode:str = Field(
+        ...,
+        title="Encode this value as a QR-Code and present the user for scanning.",
+    )
+    totp_secret:str = Field(
+        ...,
+        title="The shared secret for 2FA.",
+    )
+    username:str = Field(
+        ...,
+        title="Username of the user that enables the 2FA.",
+    )
+
 def verify_password(plain_password, hashed_password):
     return pwd_context.verify(plain_password, hashed_password)
 

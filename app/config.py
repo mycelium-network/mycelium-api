@@ -17,6 +17,8 @@ A live version of the API is hosted under https://mycelium-api.herokuapp.com/doc
 |bob|secret|XLQAFA3YDIHHEZWB|
 """
 VERSION = "0.0.1.alpha"
+APPLICATION_NAME = "Mycelium Network"
+APPLICATION_URL = "mycelium-api.herokuapp.com"
 
 
 # SECURITY RELEVANT CONFIGURATION!

@@ -38,3 +38,19 @@ def verify(*,
             return {"code":code,"verified":False}
     else:
         raise HTTPException(status_code=404, detail="Second Factor not found")
+
+@router.get(
+    "/2fa/enable",
+    summary="Enable and create a new 2FA config",
+    response_model=security.SecondFactorQRCode
+)
+def enable(current_user: users.User = Depends(users.get_current_active_user)):
+    """
+    Enable the 2FA process and will return an String containing the value typically presented as a QR-Code.
+    """
+    if not current_user.second_factor:
+        totp_secret = pyotp.random_base32()
+        qrcode = pyotp.totp.TOTP(totp_secret).provisioning_uri(current_user.username, config.APPLICATION_NAME+" - "+config.APPLICATION_URL)
+        return {"qrcode": qrcode, "totp_secret":totp_secret,"username":current_user.username}
+    else:
+        raise HTTPException(status_code=401, detail="Second Factor already enabled")
