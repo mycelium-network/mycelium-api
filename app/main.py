@@ -1,4 +1,5 @@
 from fastapi import Depends, FastAPI, Header, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 
 # Router Imports
 from app.routers import items, users, second_factor, authentication
@@ -11,6 +12,21 @@ app = FastAPI(
     description = config.DESCRIPTION,
     version = config.VERSION
 )
+
+# Configure CORS
+origins = [
+    "https://www.mycelium.space",
+    "http://localhost:9000" # Allows local frontend development for the public api
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 # Authentication Routers
 app.include_router(
