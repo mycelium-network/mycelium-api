@@ -1,5 +1,7 @@
-# mycelium-api
-The API for the mycelium project.
+![Test Mycelium API](https://github.com/mycelium-network/mycelium-api/workflows/Test%20Mycelium%20API/badge.svg)
+
+# Mycelium Network API
+The API for the Mycelium-Network project.
 
 ## Requirements
 Clone this repository and navigate in the cloned folder:
