@@ -1,4 +1,4 @@
-![Test Mycelium API](https://github.com/mycelium-network/mycelium-api/workflows/Test%20Mycelium%20API/badge.svg)
+![pytest](https://github.com/mycelium-network/mycelium-api/workflows/pytest/badge.svg)
 
 # Mycelium Network API
 The API for the Mycelium-Network project.
