@@ -13,6 +13,15 @@ app = FastAPI(
     version = config.VERSION
 )
 
+@app.get("/")
+async def root():
+    return {
+        "status": "running",
+        "swagger_ui": "/docs",
+        "redoc": "/redoc",
+        "openid_connect": "/.well-known/openid-configuration"
+        }
+
 # Configure CORS
 origins = [
     "https://www.mycelium.space",
