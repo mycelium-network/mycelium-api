@@ -25,7 +25,9 @@ def get_user(db, username: str):
     if username in db:
         user_dict = db[username]
         return UserInDB(**user_dict)
-    raise HTTPException(status_code=404, detail="User not found.")
+    raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,
+                        detail="Incorrect username or password",
+                        headers={"WWW-Authenticate": "Bearer"})
 
 
 async def get_current_user(token: str = Depends(OAuth2PasswordBearer(tokenUrl="/token"))):
