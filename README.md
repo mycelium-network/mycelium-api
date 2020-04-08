@@ -1,4 +1,6 @@
-![pytest](https://github.com/mycelium-network/mycelium-api/workflows/pytest/badge.svg)
+![pytest](https://github.com/mycelium-network/mycelium-api/workflows/pytest/badge.svg) [![codecov](https://codecov.io/gh/mycelium-network/mycelium-api/branch/master/graph/badge.svg)](https://codecov.io/gh/mycelium-network/mycelium-api)
+
+
 
 # Mycelium Network API
 The API for the Mycelium-Network project.
