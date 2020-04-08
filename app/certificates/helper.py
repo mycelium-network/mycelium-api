@@ -1,13 +1,9 @@
-from OpenSSL import crypto, SSL
-from socket import gethostname
-from pprint import pprint
-from time import gmtime, mktime
-from authlib.jose import jwk
+from OpenSSL import crypto
 
 import app.config as config
 
-def create_self_signed_cert():
 
+def create_self_signed_cert():
     # create a key pair
     k = crypto.PKey()
     k.generate_key(crypto.TYPE_RSA, 4096)
@@ -22,14 +18,17 @@ def create_self_signed_cert():
     cert.get_subject().CN = config.APPLICATION_URL
     cert.set_serial_number(1000)
     cert.gmtime_adj_notBefore(0)
-    cert.gmtime_adj_notAfter(365*24*60*60) # valid for 1 year
+    cert.gmtime_adj_notAfter(365*24*60*60)  # valid for 1 year
     cert.set_issuer(cert.get_subject())
     cert.set_pubkey(k)
     cert.sign(k, 'sha512')
 
-    cert_dump = crypto.dump_certificate(crypto.FILETYPE_PEM, cert).decode("utf-8")
-    private_key_dump = crypto.dump_privatekey(crypto.FILETYPE_PEM, k).decode("utf-8")
-    public_key_dump = crypto.dump_publickey(crypto.FILETYPE_PEM, k).decode("utf-8")
+    cert_dump = crypto.dump_certificate(
+        crypto.FILETYPE_PEM, cert).decode("utf-8")
+    private_key_dump = crypto.dump_privatekey(
+        crypto.FILETYPE_PEM, k).decode("utf-8")
+    public_key_dump = crypto.dump_publickey(
+        crypto.FILETYPE_PEM, k).decode("utf-8")
 
     cert_file = open(config.CERT_FILE, "w")
     cert_file.write(cert_dump)

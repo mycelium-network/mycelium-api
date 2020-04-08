@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends
-from app.models import security, users
+from app.models import users
+
 router = APIRouter()
 
 

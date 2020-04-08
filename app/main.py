@@ -1,4 +1,4 @@
-from fastapi import Depends, FastAPI, Header, HTTPException
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.certificates import helper
 
@@ -12,15 +12,15 @@ import app.config as config
 config.CERT, config.PRIVATE_KEY, config.PUBLIC_KEY = helper.create_self_signed_cert()
 
 app = FastAPI(
-    title = config.TITLE,
-    description = config.DESCRIPTION,
-    version = config.VERSION
+    title=config.TITLE,
+    description=config.DESCRIPTION,
+    version=config.VERSION
 )
 
 # Configure CORS
 origins = [
     "https://www.mycelium.space",
-    "http://localhost:9000" # Allows local frontend development for the public api
+    "http://localhost:9000"  # Allows local frontend development for the public api
 ]
 
 app.add_middleware(
@@ -32,9 +32,11 @@ app.add_middleware(
 )
 
 # Provide info for the api
+
+
 @app.get(
     "/",
-    tags = ["Public"]    
+    tags=["Public"]
 )
 async def get_root_path():
     return {
@@ -42,7 +44,7 @@ async def get_root_path():
         "swagger_ui": "/docs",
         "redoc": "/redoc",
         "openid_connect": "/.well-known/openid-configuration"
-        }
+    }
 
 # Authentication Routers
 app.include_router(

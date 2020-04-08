@@ -19,5 +19,6 @@ async def read_item(item_id: str):
 )
 async def update_item(item_id: str):
     if item_id != "foo":
-        raise HTTPException(status_code=403, detail="You can only update the item: foo")
+        raise HTTPException(
+            status_code=403, detail="You can only update the item: foo")
     return {"item_id": item_id, "name": "The Fighters"}
