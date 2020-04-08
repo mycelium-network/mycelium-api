@@ -1,5 +1,6 @@
 from fastapi import Depends, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from app.certificates import helper
 
 # Router Imports
 from app.routers import items, users, second_factor, authentication
@@ -7,20 +8,14 @@ from app.routers import items, users, second_factor, authentication
 # Configuration Import
 import app.config as config
 
+# Generate a new Key Pair.
+config.CERT, config.PRIVATE_KEY, config.PUBLIC_KEY = helper.create_self_signed_cert()
+
 app = FastAPI(
     title = config.TITLE,
     description = config.DESCRIPTION,
     version = config.VERSION
 )
-
-@app.get("/")
-async def root():
-    return {
-        "status": "running",
-        "swagger_ui": "/docs",
-        "redoc": "/redoc",
-        "openid_connect": "/.well-known/openid-configuration"
-        }
 
 # Configure CORS
 origins = [
@@ -36,6 +31,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Provide info for the api
+@app.get(
+    "/",
+    tags = ["Public"]    
+)
+async def get_root_path():
+    return {
+        "status": "running",
+        "swagger_ui": "/docs",
+        "redoc": "/redoc",
+        "openid_connect": "/.well-known/openid-configuration"
+        }
 
 # Authentication Routers
 app.include_router(

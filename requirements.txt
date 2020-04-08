@@ -17,3 +17,5 @@ uvicorn==0.11.3
 uvloop==0.14.0
 websockets==8.1
 requests==2.22.0
+authlib==0.14.1
+pyopenssl==19.1.0

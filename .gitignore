@@ -124,3 +124,5 @@ dmypy.json
 
 ## Remove config file with sensintive data from git
 venv/
+*.pem
+*.key

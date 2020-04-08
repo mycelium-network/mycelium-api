@@ -20,11 +20,25 @@ VERSION = "0.0.1.alpha"
 APPLICATION_NAME = "Mycelium Network"
 APPLICATION_URL = "mycelium-api.herokuapp.com"
 
+# This name will be used to populate the SSL certificate as well. 
+# Can include your hackerspace or other group name but should be 
+# something that can be recognized in the public.
+ORGANIZATION_UNIT = "Mycelium Network Project" 
 
-# SECURITY RELEVANT CONFIGURATION!
-# !DANGER
-SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7" # openssl rand -hex 32
-ALGORITHM = "HS256"
+
+#### SECURITY RELEVANT CONFIGURATION!
+#### !DANGER!
+# Certificates will be generate newly on each restart.
+CERT_FILE = "app/certificates/server_jwt_cert.pem"
+PRIVATE_KEY_FILE = "app/certificates/server_jwt_private.key"
+PUBLIC_KEY_FILE = "app/certificates/server_jwt_public.key"
+CERT = ""
+PRIVATE_KEY = ""
+PUBLIC_KEY = ""
+
+ALGORITHM = "RS512"
+# SECRET_KEY = "09d25e094faa6ca2556c818166b7a9563b93f7099f6f0f4caa6cf63b88e8d3e7" # openssl rand -hex 32
+# ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 
 
