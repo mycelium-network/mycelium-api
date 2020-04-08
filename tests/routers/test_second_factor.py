@@ -17,11 +17,11 @@ def test_status_johndoe():
     assert response.json() == {
         "status": False
     }
-    response = utils.get_authorized_endpoint(STATUS_ENDPOINT, "johndoe", "secret", utils.COOKIE)
-    assert response.status_code == 200
-    assert response.json() == {
-        "status": False
-    }
+    # response = utils.get_authorized_endpoint(STATUS_ENDPOINT, "johndoe", "secret", utils.COOKIE)
+    # assert response.status_code == 200
+    # assert response.json() == {
+    #     "status": False
+    # }
 
 def test_status_alice():
     response = utils.get_authorized_endpoint(STATUS_ENDPOINT, "alice", "secret", utils.HEADER)
@@ -29,11 +29,11 @@ def test_status_alice():
     assert response.json() == {
         "detail": "Inactive user"
     }
-    response = utils.get_authorized_endpoint(STATUS_ENDPOINT, "alice", "secret", utils.COOKIE)
-    assert response.status_code == 400
-    assert response.json() == {
-        "detail": "Inactive user"
-    }
+    # response = utils.get_authorized_endpoint(STATUS_ENDPOINT, "alice", "secret", utils.COOKIE)
+    # assert response.status_code == 400
+    # assert response.json() == {
+    #     "detail": "Inactive user"
+    # }
 
 def test_status_bob():
     response = utils.get_authorized_endpoint(STATUS_ENDPOINT, "bob", "secret", utils.HEADER)
@@ -41,8 +41,8 @@ def test_status_bob():
     assert response.json() == {
         "status": True
     }
-    response = utils.get_authorized_endpoint(STATUS_ENDPOINT, "bob", "secret", utils.COOKIE)
-    assert response.status_code == 200
-    assert response.json() == {
-        "status": True
-    }
+    # response = utils.get_authorized_endpoint(STATUS_ENDPOINT, "bob", "secret", utils.COOKIE)
+    # assert response.status_code == 200
+    # assert response.json() == {
+    #     "status": True
+    # }

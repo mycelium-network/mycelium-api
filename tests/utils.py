@@ -53,7 +53,7 @@ def get_authorized_endpoint(endpoint, username, password, cookie_or_header):
         return response
     if cookie_or_header == COOKIE:
         auth_response = authentication_user(username, password)
-        if auth_response.status != 200:
+        if auth_response.status_code != 200:
             response = CLIENT.get(
                 endpoint,
                 cookies={
