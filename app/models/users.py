@@ -29,7 +29,6 @@ def get_user(db, username: str):
                         detail="Incorrect username or password",
                         headers={"WWW-Authenticate": "Bearer"})
 
-
 async def get_current_user(token: str = Depends(OAuth2PasswordBearer(tokenUrl="/token"))):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,

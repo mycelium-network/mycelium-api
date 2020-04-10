@@ -1,19 +1,22 @@
 # APPLICATION CONFIG
 TITLE = "Mycelium-Network API"
 DESCRIPTION = """
+[![pytest](https://github.com/mycelium-network/mycelium-api/workflows/pytest/badge.svg)](https://github.com/mycelium-network/mycelium-api/actions?query=workflow%3Apytest)
+[![codecov](https://codecov.io/gh/mycelium-network/mycelium-api/branch/master/graph/badge.svg)](https://codecov.io/gh/mycelium-network/mycelium-api)
+
 __ALPHA STATUS__
 
 Mycelium is a distributed network to share common goods.
 
-Find the full project under https://www.mycelium.space/.
+Find the full project under [https://www.mycelium.space/](https://www.mycelium.space/).
 
-A live version of the API is hosted under https://mycelium-api.herokuapp.com/docs.
+A live version of the API is hosted under [https://mycelium-api.herokuapp.com/docs](https://mycelium-api.herokuapp.com/docs).
 
 #### Demo Users
 | User | Password | TOTP Secret |
 |---|---|---|
-|johndoe|secret|PD6D3NQ3CKVEPIHH|
-|alice|secret|Q5XR4DG5KASPGWNA|
+|johndoe|secret| |
+|alice|secret| |
 |bob|secret|XLQAFA3YDIHHEZWB|
 """
 VERSION = "0.0.1.alpha"
@@ -70,10 +73,10 @@ fake_users_db = {
 
 fake_otp_secret_db = {
     "johndoe": {
-        "secret": "PD6D3NQ3CKVEPIHH"
+        "secret": ""
     },
     "alice": {
-        "secret": "Q5XR4DG5KASPGWNA"
+        "secret": ""
     },
     "bob": {
         "secret": "XLQAFA3YDIHHEZWB"
