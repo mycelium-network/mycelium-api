@@ -20,6 +20,7 @@ app = FastAPI(
 # Configure CORS
 origins = [
     "https://www.mycelium.space",
+    "https://mycelium.space",
     "http://localhost:9000"  # Allows local frontend development for the public api
 ]
 
