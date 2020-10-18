@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.certificates import helper
 
 # Router Imports
-from app.routers import items, users, second_factor, authentication
+from app.routers import items, users, second_factor, authentication, autocomplete
 # Model Imports
 # Configuration Import
 import app.config as config
@@ -72,5 +72,13 @@ app.include_router(
     tags=["Items"],
     responses={404: {"description": "Not found"}},
 )
+
+app.include_router(
+    autocomplete.router,
+    prefix="/auth",
+    tags=["Auto-Complete"],
+    responses={404: {"description": "Not found"}},
+)
+
 
 # Unauthenticated APIs (prefix /public)
