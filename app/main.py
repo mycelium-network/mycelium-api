@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.certificates import helper
 
 # Router Imports
-from app.routers import items, users, second_factor, authentication, autocomplete
+from app.routers import things, users, second_factor, authentication, autocomplete
 # Model Imports
 # Configuration Import
 import app.config as config
@@ -68,9 +68,9 @@ app.include_router(
     responses={404: {"description": "Not found"}},
 )
 app.include_router(
-    items.router,
+    things.router,
     prefix="/auth",
-    tags=["Items"],
+    tags=["Things"],
     responses={404: {"description": "Not found"}},
 )
 
